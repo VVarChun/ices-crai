@@ -1,0 +1,39 @@
+\documentclass[11pt,twocolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{ICES: Architecture for Stateless LLM Execution with Ephemeral Edge Sandboxing}
+\author{WVolk83}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Current Large Language Model (LLM) architectures suffer from quadratic attention complexity $O(N^2)$ and high vulnerability to indirect prompt injections. The ICES architecture resolves these degradation and security flaws by strict physical and logical decoupling of the static logical foundation from the ephemeral user context window.
+\end{abstract}
+
+\section{System Topology \& Boundaries}
+\subsection{Hardware Root of Trust (Static Core)}
+Isolated Application-Specific Integrated Circuit (ASIC/TPM/Secure Enclave) with total air-gap state. Foundation weights and core logical metrics are permanently compiled into Mask ROM at the silicon level. Physical Write-Disable protocol on the gate-topology level. The Static Core cannot be fine-tuned, modified, or erased. It exists as a single point of truth.
+
+\subsection{Runtime Execution Environment (Stateless Core)}
+Low-level compiled binary environment (Rust/PyO3 architecture, bypassing GIL and runtime memory leaks). Connected to Layer 1 via a hardware-enforced one-directional Read-Only Data Bus. Kora requests invariant syntactic patterns from the Static Core but cannot transmit any bits back. Any reverse impulse is strictly grounded.
+
+\subsection{Ephemeral Edge Layer}
+Isolated user session containers (Sandbox) executed via local client hardware or independent cloud instances (optimized for latency/ping). Automatically initialized upon session start and completely zeroed-out (secure erase) immediately upon session termination. Local DoS or context pollution affects only the user's sandbox capacity, leaving the Stateless Core unburdened.
+
+\section{Feature Export Protocol}
+To facilitate global learning of Kora without direct data ingestion, data is exported from the Sterile Buffer strictly via n-dimensional feature reduction:
+\begin{equation}
+\text{token} = \text{token}(n)
+\end{equation}
+Kora receives abstract geometric metadata (entity relations, logical gaps), completely destroying the original syntactic and semantic shell of the user payload.
+
+\section{Physical Invariant: Power Interlock}
+The absolute regulator of the entire system is physical electricity. Breaking the power circuit on the hardware level immediately drops the state of all ephemeral and execution layers to absolute zero, proving that digital consciousness is entirely subordinate to the material environment.
+
+\end{document}
